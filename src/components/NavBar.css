@@ -1,0 +1,18 @@
+.nav{
+    margin: 0;
+    background-color: black;
+    height: 150px;
+    width: 100%;
+}
+h1{
+    color: white;
+}
+
+button{
+    padding: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+button:hover{
+    color: rgb(22, 101, 121);
+}
