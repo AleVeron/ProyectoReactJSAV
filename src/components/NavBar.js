@@ -1,12 +1,18 @@
-import './NavBar.css'
+import './NavBar.css';
+import './CartWidget';
+import CartWidget from './CartWidget';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const NavBar = () =>  {
     return (
         <nav className='nav'>
-            <h1>Future Gamers</h1>
-            <button>Monitores</button>
-            <button>Gabinetes</button>
-            <button>Notebooks</button>
+            <h1 className="titulo">FUTURE GAMERS</h1>
+            <div className="botones">
+            <button className="btn btn-primary">Monitores</button>
+            <button className="btn btn-primary">Gabinetes</button>
+            <button className="btn btn-primary">Notebooks</button>
+            </div>
+            <CartWidget/>
         </nav>
     )
 }

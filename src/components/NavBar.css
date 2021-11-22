@@ -1,15 +1,24 @@
 .nav{
     margin: 0;
+    position: sticky;
     background-color: black;
     height: 150px;
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
-h1{
+.titulo{
+    width: 15%;
     color: white;
+    font-size: 35px;
 }
 
-button{
-    padding: 5px;
+.botones{
+    display: flex;
+    width: 50%;
+    align-items: center;
+    justify-content: space-around;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
 }
