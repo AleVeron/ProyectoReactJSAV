@@ -1,10 +1,9 @@
 
-
-const ItemListContainer = () =>  {
+const ItemListContainer = ({greeting}) =>  {
     return (
-        <section>
-            <p>¡Hola! Bienvenido a mi proyecto de React</p>
-        </section>
+        <div>
+            <h1>{greeting}</h1>
+        </div>
     )
 }
 

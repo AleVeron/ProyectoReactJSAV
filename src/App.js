@@ -2,6 +2,8 @@ import './App.css';
 import NavBar from './components/NavBar';
 import ItemListContainer from './components/ItemListContainer';
 
+
+
 function App() {
   return (
     <div className="App"> 
@@ -9,7 +11,7 @@ function App() {
       <NavBar/>
 
       <body className="App-header">
-        <ItemListContainer/>
+        <ItemListContainer greeting="Hola!, Bienvenido a mi proyecto de React"/>
       </body>
 
     </div>
