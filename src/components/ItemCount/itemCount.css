@@ -1,0 +1,26 @@
+
+.contador{
+    width: 400px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.sumaResta{
+    width: 40%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.boton{
+    width: 40px;
+    height: 40px;
+}
+
+.agregar{
+    margin: 20px;
+}

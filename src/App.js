@@ -1,18 +1,19 @@
+import { useState } from 'react';
 import './App.css';
-import NavBar from './components/NavBar';
-import ItemListContainer from './components/ItemListContainer';
+import NavBar from './components/NavBar/NavBar';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 
 
 
 function App() {
+  
   return (
     <div className="App"> 
 
       <NavBar/>
-
-      <body className="App-header">
-        <ItemListContainer greeting="Hola!, Bienvenido a mi proyecto de React"/>
-      </body>
+      
+      <ItemListContainer greeting="Hola!, Bienvenido a mi proyecto de React"/>
+      
 
     </div>
   );
