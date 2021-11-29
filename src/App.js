@@ -1,8 +1,6 @@
-import { useState } from 'react';
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
-
 
 
 function App() {
@@ -14,7 +12,6 @@ function App() {
       
       <ItemListContainer greeting="Hola!, Bienvenido a mi proyecto de React"/>
       
-
     </div>
   );
 }

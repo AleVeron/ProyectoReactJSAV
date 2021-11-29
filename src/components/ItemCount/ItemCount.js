@@ -7,13 +7,13 @@ const ItemCount = ({onAdd,stock}) => {
     const [count, setCount] = useState(1);
 
     //funcion sumar
-    const handleClick = () => {
+    const sumar = () => {
         if ( count < stock){
         setCount (count + 1);}
     }
 
     //funcion restar
-    const handlClick = () => {
+    const restar = () => {
         if ( count >= 2){
         setCount (count - 1);}
     }
@@ -27,9 +27,9 @@ const ItemCount = ({onAdd,stock}) => {
         <div className="contador">
             <p>PRODUCTOS</p>
             <div className="sumaResta">
-            <button className="boton btn btn-danger" onClick={handlClick}>-</button>
+            <button className="boton btn btn-danger" onClick={restar}>-</button>
             <span>{count}</span>
-            <button className="boton btn btn-danger" onClick={handleClick}>+</button>
+            <button className="boton btn btn-danger" onClick={sumar}>+</button>
             </div>
             <button className="btn btn-danger" onClick={reset}>Quitar</button>
             <button className="agregar btn btn-danger" onClick={onAdd}>Agregar al Carrito</button>

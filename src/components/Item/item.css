@@ -1,0 +1,16 @@
+.cartas{
+    background-color: black;
+    border-radius: 7px;
+}
+
+.imagenCard{
+    border-radius: 7px;
+    width: 95%;
+    margin-top: 3px;
+}
+
+.botonCard{
+    font-size: 15px;
+    color:white;
+    margin-bottom: 4px;
+}
