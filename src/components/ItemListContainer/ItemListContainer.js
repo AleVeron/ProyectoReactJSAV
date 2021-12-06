@@ -3,7 +3,7 @@ import swal from 'sweetalert';
 import { useEffect, useState } from "react";
 import ItemList from "../ItemList/ItemList"
 import { getProductos } from "../../productos";
-import { Carousel } from "bootstrap";
+
 
 
 
@@ -40,8 +40,11 @@ const ItemListContainer = ({greeting}) =>  {
             <h1>{greeting}</h1>
             <ItemList productos = {productos}/>
             <ItemCount onAdd = {onAdd} stock = {3}/>
+            
         </div>
     )
 }
 
 export default ItemListContainer;
+
+

@@ -23,3 +23,8 @@ export const getProductos = () => {
         }, 1000)
     })
 }
+
+
+
+
+

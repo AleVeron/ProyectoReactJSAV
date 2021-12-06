@@ -6,7 +6,7 @@ import swal from 'sweetalert';
 const onAdd = () => {
     swal({
     title:"Felicitaciones!",
-    text:"Se agrego el producto al carro de compras",
+    text:`Se agrego el producto al carro de compras`,
     icon: "success",
     button:"Volver"
 })

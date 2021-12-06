@@ -1,0 +1,31 @@
+.ampliado{
+    background-color: black;
+    width: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height:800px;
+    flex-direction: column;
+}
+
+.imagenCard{
+    border-radius: 7px;
+    width: 300px;
+    margin-top: 3px;
+}
+
+.botonCard{
+    font-size: 15px;
+    color:white;
+    margin-bottom: 4px;
+}
+
+p{
+    color: white;
+    font-size:24px;
+}
+
+h1{
+    color:white;
+    margin-bottom: 10px;
+}
