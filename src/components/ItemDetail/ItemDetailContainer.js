@@ -3,7 +3,7 @@ import ItemDetail from "./ItemDetail";
 import "./itemDetailContainer.css";
 import { useEffect, useState } from "react";
 import swal from 'sweetalert';
-import { getUno } from "../../producto";
+import {getItem} from "../../productos";
 
 
 //SWEET ALERT
@@ -21,7 +21,7 @@ const ItemDetailContainer = () =>  {
     const [productos, setProductos] = useState([])
 
     useEffect( () => {
-        const list = getUno()
+        const list = getItem()
         list.then( list => {
             setProductos(list)
         })
@@ -34,7 +34,7 @@ const ItemDetailContainer = () =>  {
     
         return(
             <div className="itemDetailContainer" >
-                {productos.map(producto => <ItemDetail onAdd={onAdd} key={producto.id} producto={producto}/>)}
+                <ItemDetail producto={productos}/>
             </div>
         )
     

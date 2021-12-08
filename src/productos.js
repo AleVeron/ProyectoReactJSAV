@@ -10,10 +10,11 @@ const productos =[
      "id" : 2   
     },
     {"nombre" : "Notebook",
-     "precio" : "120000",
-     "img" : "https://www.corner.com.uy/imgs/productos/productos31_4306.jpg",
-     "id" : 3  
-    }
+    "precio" : "120000",
+    "img" : "https://www.corner.com.uy/imgs/productos/productos31_4306.jpg",
+    "id" : 3,
+    "info" : "Procesador: Intel core i3, Gráficos: Intel HD, Memoria Ram: DDR4 4GB SODIMM. Almcenamiento: SATA de 1000 GB, 5400 rpm, Sin Unidad óptica.Conectividad Inalámbrica: 802.11b/g/n." 
+   }
 ]
  
 export const getProductos = () => {
@@ -25,11 +26,10 @@ export const getProductos = () => {
 }
 
 
-export const getProductById = (id) => {  
+export const getItem = () => {    
     return new Promise((resolve, reject) => {
-        const producto = productos.find(prod => parseInt(prod.id) === parseInt(id))
-        setTimeout(() => resolve(producto), 1000)
+        setTimeout(() => {
+            resolve(productos[2])
+        }, 1000)        
     })
 }
-
-
