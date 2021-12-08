@@ -1,8 +1,10 @@
+import React from 'react'
 import ItemDetail from "./ItemDetail";
-import "./itemList.css";
+import "./itemDetailContainer.css";
 import { useEffect, useState } from "react";
 import swal from 'sweetalert';
 import { getUno } from "../../producto";
+
 
 //SWEET ALERT
 const onAdd = () => {
@@ -31,7 +33,7 @@ const ItemDetailContainer = () =>  {
 
     
         return(
-            <div className="itemList" >
+            <div className="itemDetailContainer" >
                 {productos.map(producto => <ItemDetail onAdd={onAdd} key={producto.id} producto={producto}/>)}
             </div>
         )

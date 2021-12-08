@@ -1,0 +1,8 @@
+.itemDetailContainer{
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #282c34;
+    margin: 0 30% 0 30%;
+}

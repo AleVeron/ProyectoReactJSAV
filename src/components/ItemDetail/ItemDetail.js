@@ -5,7 +5,7 @@ import ItemCount from "../ItemCount/ItemCount"
 const ItemDetail = ({producto, onAdd}) =>{
     return(
         
-        <div className="ampliado">
+        <div className="detaildedCart">
             <h1>{producto.nombre}</h1>
             <img className="imagenCard" src={producto.img} alt={producto.nombre}/>
             <p>Precio:{producto.precio}</p>

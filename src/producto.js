@@ -16,6 +16,6 @@ export const getUno = () => {
     return new Promise((resolve,reject) => {
         setTimeout(() => {
             resolve(producto)
-        }, 3000)
+        }, 2000)
     })
 }
