@@ -1,46 +1,41 @@
-import ItemCount from "../ItemCount/ItemCount";
-import swal from 'sweetalert';
 import { useEffect, useState } from "react";
 import ItemList from "../ItemList/ItemList"
 import { getProductos } from "../../productos";
-
-
-
-
-//SWEET ALERT
-const onAdd = () => {
-    swal({
-    title:"Felicitaciones!",
-    text:"Finalizaste tu compra",
-    icon: "success",
-    button:"Volver"
-})
-}
+import "./itemListContainer.css";
+import { useParams } from "react-router-dom";
 
 
 const ItemListContainer = ({greeting}) =>  {
 
     const [productos, setProductos] = useState([])
+    const {categoriaId} = useParams();
+    console.log(categoriaId);
+    const onResize = () =>{
+        console.log("cambio tamaño de ventana");
+    }
 
-    useEffect( () => {
-        const list = getProductos()
-        list.then( list => {
-            setProductos(list)
+
+
+    useEffect(() => {        
+        getProductos(categoriaId).then(item => {
+            setProductos(item)
+        }).catch(err  => {
+            console.log(err)
         })
 
-        return( () => {
+    window.addEventListener('resize', onResize)
+
+    return (() => {
             setProductos([])
+            window.removeEventListener('resize', onResize)
         })
-    }, [])
-
-
+        
+    }, [categoriaId])
 
     return (
         <div className="App-header">
-            <h1>{greeting}</h1>
-            <ItemList productos = {productos}/>
-            <ItemCount onAdd = {onAdd} stock = {3}/>
-            
+            <div className="saludo">{greeting}</div>
+            <ItemList productos = {productos}/>      
         </div>
     )
 }

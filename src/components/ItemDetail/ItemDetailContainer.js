@@ -3,7 +3,8 @@ import ItemDetail from "./ItemDetail";
 import "./itemDetailContainer.css";
 import { useEffect, useState } from "react";
 import swal from 'sweetalert';
-import {getItem} from "../../productos";
+import { useParams } from "react-router-dom";
+import {getProductoById} from "../../productos";
 
 
 //SWEET ALERT
@@ -18,18 +19,23 @@ const onAdd = () => {
 
 const ItemDetailContainer = () =>  {
 
+    const {paramId} = useParams()
+    console.log(paramId);
+
     const [productos, setProductos] = useState([])
 
     useEffect( () => {
-        const list = getItem()
-        list.then( list => {
-            setProductos(list)
+        getProductoById(paramId).then(item => {
+            setProductos(item)
+        }).catch(err  => {
+            console.log(err)
         })
 
-        return( () => {
-            setProductos([])
+        return (() => {
+            setProductos()
         })
-    }, [])
+
+    }, [paramId])
 
     
         return(

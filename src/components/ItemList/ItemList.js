@@ -13,7 +13,7 @@ const onAdd = () => {
 }
 
 
-const ItemList = ({productos}) => {
+const ItemList = ({productos = []}) => {
 
     return(
         <div className="itemList">
