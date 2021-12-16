@@ -4,21 +4,24 @@ const productos =[
      "precio" : "25000",
      "img" : "https://www.corner.com.uy/imgs/productos/productos31_4285.jpg",
      "id" : 1,
-     "info": "Tipo: Monitor LCD TN 24” W,Tamaño de pantalla: 521.28mm  x 293.22mm, Resolución: Full HD 1920 x 1080. Ángulos de visión: 170 grados / 160 grados (Typ)"
+     "info": "Tipo: Monitor LCD TN 24” W,Tamaño de pantalla: 521.28mm  x 293.22mm, Resolución: Full HD 1920 x 1080. Ángulos de visión: 170 grados / 160 grados (Typ)",
+     "stock": 13
     },
     {"categoria" : "gabinete",
      "nombre" : "Gabinete Thermaltek",
      "precio" : "15000",
      "img" : "https://www.pccompu.com.uy/imgs/productos/productos31_26577.jpg",
      "id" : 2,
-     "info": "Especificaciones Físicas: Formato: Mid-Tower. Compatibilidad: Motherboard: 6.7” x 6.7” (Mini ITX), 9.6” x 9.6” (Micro ATX), 12” x 9.6” (ATX)" 
+     "info": "Especificaciones Físicas: Formato: Mid-Tower. Compatibilidad: Motherboard: 6.7” x 6.7” (Mini ITX), 9.6” x 9.6” (Micro ATX), 12” x 9.6” (ATX)",
+     "stock": 5 
     },
     {"categoria" : "notebook",
     "nombre" : "Notebook Lenovo",
     "precio" : "120000",
     "img" : "https://www.corner.com.uy/imgs/productos/productos31_4306.jpg",
     "id" : 3,
-    "info" : "Procesador: Intel core i3, Gráficos: Intel HD, Memoria Ram: DDR4 4GB SODIMM. Almcenamiento: SATA de 1000 GB, 5400 rpm, Sin Unidad óptica.Conectividad Inalámbrica: 802.11b/g/n." 
+    "info" : "Procesador: Intel core i3, Gráficos: Intel HD, Memoria Ram: DDR4 4GB SODIMM. Almcenamiento: SATA de 1000 GB, 5400 rpm, Sin Unidad óptica.Conectividad Inalámbrica: 802.11b/g/n.",
+    "stock": 7
    }
 ]
  
@@ -61,6 +64,6 @@ export const getCategorias = () => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve(categorias)
-        }, 5000)        
+        }, 3000)        
     })
 }

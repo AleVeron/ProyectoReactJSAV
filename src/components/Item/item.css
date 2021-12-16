@@ -12,5 +12,9 @@
 .botonCard{
     font-size: 15px;
     color:white;
-    margin-bottom: 4px;
+}
+
+.buttons{
+    display:flex;
+    flex-direction: column;
 }

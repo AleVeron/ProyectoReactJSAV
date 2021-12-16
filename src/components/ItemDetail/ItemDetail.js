@@ -1,9 +1,22 @@
 import "./itemDetail.css";
-import ItemCount from "../ItemCount/ItemCount"
-import {useState} from 'react'
+import {useContext, useState} from 'react';
+import NotificationContext from '../context/NotificationContext'
+import ButtonCount from "../buttonCount/ButtonCount"
+import {Link} from 'react-router-dom';
 
 
-const ItemDetail = ({producto, onAdd}) =>{
+
+const ItemDetail = ({producto}) =>{
+
+    const Count = ButtonCount;
+    const [mostrarBoton, setMostrarBoton] = useState(true);
+    const addCarro = (count) =>{
+        alert(`Agregado al carro de compras ${count} ${producto.nombre}`)
+        setMostrarBoton(false);
+    }
+
+  
+    const {setNotification} = useContext(NotificationContext)
 
     return(
         
@@ -12,7 +25,12 @@ const ItemDetail = ({producto, onAdd}) =>{
             <img className="imagenCard" src={producto?.img} alt={producto?.nombre}/>
             <p>Precio:{producto?.precio}</p>
             <p>{producto?.info}</p>
-            <ItemCount stock = {3} onAdd = {onAdd}/>
+
+            {mostrarBoton ? 
+            (<Count onConfirm={addCarro} maxQuantity={producto?.stock}/>) 
+            : 
+            (<Link to={"/cart"} className="agregar btn btn-danger">Ir al carro de compras</Link>)
+            }   
         </div>
         
     )

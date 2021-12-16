@@ -70,9 +70,17 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 
-El proyecto cuenta con varios componentes anidados en el ItemListContainer, los cuales cumplen funciones como mostrar distintos tipos de productos segun su categoria.
-Mediante el NavBar se puede recorrer entre la pagina de inicio y las 3 distintas categorias que existen en el productos.js.
+### Proyecto
+ *El proyecto cuenta con varios componentes anidados en el ItemListContainer, los cuales cumplen funciones como mostrar distintos tipos de productos segun su categoria. La tecnologia utilizada es la de ReactJS*
+ 
+## NavBar
+*Mediante el NavBar se puede recorrer entre la pagina de inicio y las 3 distintas categorias que existen en el productos.js.*
 
-En productos.js, simulacion de una api se encuentran las funciones como getProductos que sirve para obtener todos los productos, y demas como por ID y por categorias.
+## Productos
+ *En productos.js, simulacion de una api se encuentran las funciones como getProductos que sirve para obtener todos los productos, y demas como por ID y por categorias.*
 
-En el ItemDetail se podra observar informacion adicional de cada producto y cuenta con un ItemCount que selecciona la cantidad de stock de cada producto y pulsando el boton agregar al carro redirecciona a la ruta /cart
+## Item Detail
+*En el ItemDetail se podra observar informacion adicional de cada producto y cuenta con un ItemCount que selecciona la cantidad de stock de cada producto y pulsando el boton agregar al carro redirecciona a la ruta /cart*
+
+## Github
+ La aplicacion podra encontrarse en el repositorio de github: [https://github.com/AleVeron/ProyectoReactJSAV]

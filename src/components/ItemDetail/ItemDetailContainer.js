@@ -1,5 +1,5 @@
 import React from 'react'
-import ItemDetail from "./ItemDetail";
+import ItemDetail from "./ItemDetail"
 import "./itemDetailContainer.css";
 import { useEffect, useState } from "react";
 import swal from 'sweetalert';
@@ -11,14 +11,17 @@ import {getProductoById} from "../../productos";
 const onAdd = () => {
     swal({
     title:"Felicitaciones!",
-    text:"Finalizaste tu compra",
+    text:"Se agrego al carro de compras",
     icon: "success",
     button:"Volver"
 })
 }
 
+
+
 const ItemDetailContainer = () =>  {
 
+    const [loading, setLoading] = useState(true)
     const {paramId} = useParams()
     console.log(paramId);
 
@@ -27,6 +30,7 @@ const ItemDetailContainer = () =>  {
     useEffect( () => {
         getProductoById(paramId).then(item => {
             setProductos(item)
+            setLoading(false)
         }).catch(err  => {
             console.log(err)
         })
@@ -40,7 +44,7 @@ const ItemDetailContainer = () =>  {
     
         return(
             <div className="itemDetailContainer" >
-                <ItemDetail onAdd = {onAdd} producto={productos}/>
+               {loading ? <div className='gif'><img src="https://c.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif"></img></div> : <ItemDetail onAdd = {onAdd} producto={productos}/>}
             </div>
         )
     
