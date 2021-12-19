@@ -6,7 +6,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route} from 'react-router-dom';
 import Notification from './components/notification/Notification';
 import {NotificationContextProvider} from './components/context/NotificationContext'
-import Cart from './components/context/Cart'
+import Cart from './components/Cart/Cart'
 
 
 function App() {
