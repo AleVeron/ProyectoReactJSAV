@@ -1,7 +1,7 @@
 import React from 'react';
 import './NavBar.css';
-import '../cartWidget/CartWidget';
-import CartWidget from '../cartWidget/CartWidget';
+import '../CartWidget/CartWidget';
+import CartWidget from '../CartWidget/CartWidget';
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Link} from "react-router-dom"; 
 import {getCategorias} from "../../productos";

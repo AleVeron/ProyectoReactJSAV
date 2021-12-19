@@ -1,7 +1,7 @@
 import './App.css';
-import NavBar from './components/navBar/NavBar';
-import ItemListContainer from './components/itemListContainer/ItemListContainer';
-import ItemDetailContainer from './components/itemDetail/ItemDetailContainer';
+import NavBar from './components/NavBar/NavBar';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import ItemDetailContainer from './components/ItemDetail/ItemDetailContainer';
 import React from 'react';
 import { BrowserRouter, Switch, Route} from 'react-router-dom';
 import Notification from './components/notification/Notification';
