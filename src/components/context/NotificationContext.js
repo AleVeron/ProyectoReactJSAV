@@ -14,8 +14,12 @@ export const NotificationContextProvider = ({children}) => {
     const setNotification = (severity, mensaje) => {
         setMensaje(mensaje);
         setSeverity(severity);
+        setTimeout(() => {
+            setMensaje('')
+        }, 1500)
     }
 
+    
     return (
 
         <Context.Provider value={{

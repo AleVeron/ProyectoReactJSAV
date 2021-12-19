@@ -18,7 +18,6 @@ const onAdd = () => {
 }
 
 
-
 const ItemDetailContainer = () =>  {
 
     const [loading, setLoading] = useState(true)
@@ -44,7 +43,7 @@ const ItemDetailContainer = () =>  {
     
         return(
             <div className="itemDetailContainer" >
-               {loading ? <div className='gif'><img src="https://c.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif"></img></div> : <ItemDetail onAdd = {onAdd} producto={productos}/>}
+               {loading ? <div className='gif'><img src="https://c.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif" alt="cargando"></img></div> : <ItemDetail onAdd = {onAdd} producto={productos}/>}
             </div>
         )
     

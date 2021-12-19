@@ -8,15 +8,23 @@ import {Link} from 'react-router-dom';
 
 const ItemDetail = ({producto}) =>{
 
+    //Contador
     const Count = ButtonCount;
+
+    //Funcion mostrar boton ir al carrito
     const [mostrarBoton, setMostrarBoton] = useState(true);
+
+
+    //Funcion notificacion traida del Context
+    const {setNotification} = useContext(NotificationContext)
+
+
+    //Funcion al darle click al elegir la cantidad deseada
     const addCarro = (count) =>{
-        alert(`Agregado al carro de compras ${count} ${producto.nombre}`)
+        setNotification('success', `Agregado al carro de compras ${count} ${producto.nombre}`)
         setMostrarBoton(false);
     }
-
-  
-    const {setNotification} = useContext(NotificationContext)
+    
 
     return(
         
@@ -28,7 +36,7 @@ const ItemDetail = ({producto}) =>{
 
             {mostrarBoton ? 
             (<Count onConfirm={addCarro} maxQuantity={producto?.stock}/>) 
-            : 
+            :
             (<Link to={"/cart"} className="agregar btn btn-danger">Ir al carro de compras</Link>)
             }   
         </div>

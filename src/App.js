@@ -6,11 +6,13 @@ import React from 'react';
 import { BrowserRouter, Switch, Route} from 'react-router-dom';
 import Notification from './components/notification/Notification';
 import {NotificationContextProvider} from './components/context/NotificationContext'
-import Cart from './components/cart/Cart'
+import Cart from './components/context/Cart'
 
 
 function App() {
   
+
+
   return (
     <div className="App"> 
 
@@ -29,7 +31,7 @@ function App() {
       <ItemListContainer greeting="Hola!, Bienvenido a mi proyecto de React"/>
       </Route>
 
-      <Route path='/cart'>
+      <Route exact path='/cart'>
       <Cart/>
       </Route>
 
@@ -37,7 +39,7 @@ function App() {
       <ItemListContainer greeting="Hola! Bienvenido a mi proyecto de React"/>
       </Route>
 
-      <Route path="/detail/:paramId">
+      <Route exact path="/detail/:paramId">
       <ItemDetailContainer/>
       </Route>
 
