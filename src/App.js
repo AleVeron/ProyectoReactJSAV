@@ -4,26 +4,24 @@ import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import ItemDetailContainer from './components/ItemDetail/ItemDetailContainer';
 import React from 'react';
 import { BrowserRouter, Switch, Route} from 'react-router-dom';
-import Notification from './components/notification/Notification';
-import {NotificationContextProvider} from './components/context/NotificationContext'
 import Cart from './components/Cart/Cart'
+import { CartContextProvider } from './context/CartContext';
+
+
 
 
 function App() {
   
 
-
   return (
     <div className="App"> 
 
-      <NotificationContextProvider>
+      <CartContextProvider>
 
       <BrowserRouter>
 
       <NavBar/>
 
-
-      <Notification/>
 
       <Switch>
 
@@ -47,7 +45,7 @@ function App() {
 
       </BrowserRouter>
 
-      </NotificationContextProvider>
+      </CartContextProvider>
 
     </div>
   );

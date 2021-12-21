@@ -4,7 +4,8 @@ import "./itemDetailContainer.css";
 import { useEffect, useState } from "react";
 import swal from 'sweetalert';
 import { useParams } from "react-router-dom";
-import {getProductoById} from "../../productos";
+import { getDoc, doc } from 'firebase/firestore'
+import {db} from '../../services/firebase/firebase'
 
 
 //SWEET ALERT
@@ -24,18 +25,20 @@ const ItemDetailContainer = () =>  {
     const {paramId} = useParams()
     console.log(paramId);
 
-    const [productos, setProductos] = useState([])
+    const [producto, setProducto] = useState()
 
     useEffect( () => {
-        getProductoById(paramId).then(item => {
-            setProductos(item)
+        setLoading(true)
+        getDoc(doc(db, 'items', paramId)).then((querySnapshot) => {
+            const producto = { id: querySnapshot.id, ...querySnapshot.data()}
+            setProducto(producto)
+        }).finally(()=> {
             setLoading(false)
-        }).catch(err  => {
-            console.log(err)
         })
+        
 
         return (() => {
-            setProductos()
+            setProducto()
         })
 
     }, [paramId])
@@ -43,7 +46,7 @@ const ItemDetailContainer = () =>  {
     
         return(
             <div className="itemDetailContainer" >
-               {loading ? <div className='gif'><img src="https://c.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif" alt="cargando"></img></div> : <ItemDetail onAdd = {onAdd} producto={productos}/>}
+               {loading ? <div className='gif'><img src="https://c.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif" alt="cargando"></img></div> : <ItemDetail onAdd = {onAdd} producto={producto}/>}
             </div>
         )
     

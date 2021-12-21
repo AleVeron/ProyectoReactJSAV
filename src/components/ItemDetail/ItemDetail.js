@@ -1,6 +1,5 @@
 import "./itemDetail.css";
 import {useContext, useState} from 'react';
-import NotificationContext from '../context/NotificationContext'
 import ButtonCount from "../buttonCount/ButtonCount"
 import {Link} from 'react-router-dom';
 
@@ -15,17 +14,11 @@ const ItemDetail = ({producto}) =>{
     const [mostrarBoton, setMostrarBoton] = useState(true);
 
 
-    //Funcion notificacion traida del Context
-    const {setNotification} = useContext(NotificationContext)
-
-
     //Funcion al darle click al elegir la cantidad deseada
     const addCarro = (count) =>{
-        setNotification('success', `Agregado al carro de compras ${count} ${producto.nombre}`)
         setMostrarBoton(false);
     }
     
-
     return(
         
         <div className="detaildedCart">

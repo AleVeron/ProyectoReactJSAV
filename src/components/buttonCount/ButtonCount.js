@@ -3,7 +3,7 @@ import './buttonCount.css';
 
 
 const ButtonCount = ({onConfirm, maxQuantity}) => {
-    const [count, setCount] = useState(1)
+    const [count, setCount] = useState(0)
 
     //funcion sumar
     const sumar = () => {
@@ -12,7 +12,7 @@ const ButtonCount = ({onConfirm, maxQuantity}) => {
     }
     //funcion restar
     const restar = () => {
-        if ( count >= 2){
+        if ( count >= 1){
         setCount (count - 1);}
     }
     return (

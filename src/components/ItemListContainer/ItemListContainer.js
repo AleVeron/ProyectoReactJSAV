@@ -3,6 +3,10 @@ import ItemList from "../ItemList/ItemList"
 import { getProductos } from "../../productos";
 import "./itemListContainer.css";
 import { useParams } from "react-router-dom";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import {db} from '../../services/firebase/firebase'
+
+
 
 
 const ItemListContainer = ({greeting}) =>  {
@@ -10,27 +14,51 @@ const ItemListContainer = ({greeting}) =>  {
     const [productos, setProductos] = useState([])
     const {categoriaId} = useParams();
     console.log(categoriaId);
-    const onResize = () =>{
-        console.log("cambio tamaño de ventana");
-    }
+    const [loading, setLoading] = useState()
 
+    useEffect(() => {     
+       
+        if(!categoriaId){
+        //Agrego pantalla de carga al comienzo
+        setLoading(true)
 
-
-    useEffect(() => {        
-        getProductos(categoriaId).then(item => {
-            setProductos(item)
-        }).catch(err  => {
-            console.log(err)
+        //Funcion que retorna una promise de firebase
+        getDocs(collection(db, 'items')).then((querySnapshot) =>{
+            console.log(querySnapshot)
+            const productos = querySnapshot.docs.map(doc => {
+                return { id: doc.id, ...doc.data()}
+            })
+            setProductos(productos)
+        }).catch((error)=>{
+            console.log (error)
+        }).finally(() => {
+            setLoading(false)
         })
+        } else{
+            setLoading(true)
+            getDocs(query(collection(db, 'items'), where('categoria', '==', categoriaId))).then((querySnapshot) =>{
+                console.log(querySnapshot)
+                const productos = querySnapshot.docs.map(doc => {
+                    return { id: doc.id, ...doc.data()}
+                })
+                setProductos(productos)
+            }).catch((error)=>{
+                console.log (error)
+            }).finally(() => {
+                setLoading(false)
+            })
+        }
+            
 
-    window.addEventListener('resize', onResize)
-
-    return (() => {
+        return (() => {
             setProductos([])
-            window.removeEventListener('resize', onResize)
         })
         
     }, [categoriaId])
+
+    if(loading) {
+        return (<div className='gif'><img src="https://c.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif" alt="cargando"></img></div>)
+    }
 
     return (
         <div className="App-header">
