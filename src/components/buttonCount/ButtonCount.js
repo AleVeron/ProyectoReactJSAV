@@ -2,7 +2,8 @@ import {useState} from 'react';
 import './buttonCount.css';
 
 
-const ButtonCount = ({onConfirm, maxQuantity}) => {
+
+const ButtonCount = ({onAdd, maxQuantity}) => {
     const [count, setCount] = useState(0)
 
     //funcion sumar
@@ -22,7 +23,7 @@ const ButtonCount = ({onConfirm, maxQuantity}) => {
             <span>{count}</span>
             <button className="boton btn btn-danger" onClick={sumar}>+</button>
             </div>
-            <button className="agregar btn btn-danger" onClick={() => onConfirm(count)}>Agregar al Carrito</button>
+            <button className="agregar btn btn-danger" onClick={() => onAdd(count)}>Agregar al Carrito</button>
         </div>
     )
 }

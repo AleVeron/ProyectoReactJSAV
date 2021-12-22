@@ -1,11 +1,24 @@
 import "./itemDetail.css";
-import {useContext, useState} from 'react';
+import { useState } from 'react';
 import ButtonCount from "../buttonCount/ButtonCount"
 import {Link} from 'react-router-dom';
+import useCartContext from "../../context/CartContext";
+
 
 
 
 const ItemDetail = ({producto}) =>{
+
+    //Agrego funciones del useCartContext
+    const {addItem} = useCartContext();
+    const [buy, setBuy] = useState(false);
+    const [qty, setQty] = useState(0);
+
+    const handleBuy = (qty) => {
+        setBuy(true);
+        setQty(qty);
+    }
+
 
     //Contador
     const Count = ButtonCount;
@@ -17,6 +30,7 @@ const ItemDetail = ({producto}) =>{
     //Funcion al darle click al elegir la cantidad deseada
     const addCarro = (count) =>{
         setMostrarBoton(false);
+        addItem(producto, count);
     }
     
     return(
@@ -28,7 +42,7 @@ const ItemDetail = ({producto}) =>{
             <p>{producto?.info}</p>
 
             {mostrarBoton ? 
-            (<Count onConfirm={addCarro} maxQuantity={producto?.stock}/>) 
+            (<Count onAdd={addCarro}  maxQuantity={producto?.stock}/>) 
             :
             (<Link to={"/cart"} className="agregar btn btn-danger">Ir al carro de compras</Link>)
             }   

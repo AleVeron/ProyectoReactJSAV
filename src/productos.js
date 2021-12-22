@@ -51,20 +51,20 @@
 //     })
 // }
 
-const categorias=[
-    {id:"monitor", description:"Monitores"},
-    {id:"gabinete", description:"Gabinetes"},
-    {id:"notebook", description:"Notebooks"}
-]
+// const categorias=[
+//     {id:"monitor", description:"Monitores"},
+//     {id:"gabinete", description:"Gabinetes"},
+//     {id:"notebook", description:"Notebooks"}
+// ]
 
 
 
 //Obtener producto por categoria 
 
-export const getCategorias = () => {    
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(categorias)
-        }, 3000)        
-    })
-}
+// export const getCategorias = () => {    
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             resolve(categorias)
+//         }, 3000)        
+//     })
+// }

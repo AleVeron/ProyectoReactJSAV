@@ -2,21 +2,10 @@ import React from 'react'
 import ItemDetail from "./ItemDetail"
 import "./itemDetailContainer.css";
 import { useEffect, useState } from "react";
-import swal from 'sweetalert';
 import { useParams } from "react-router-dom";
 import { getDoc, doc } from 'firebase/firestore'
 import {db} from '../../services/firebase/firebase'
 
-
-//SWEET ALERT
-const onAdd = () => {
-    swal({
-    title:"Felicitaciones!",
-    text:"Se agrego al carro de compras",
-    icon: "success",
-    button:"Volver"
-})
-}
 
 
 const ItemDetailContainer = () =>  {
@@ -46,7 +35,7 @@ const ItemDetailContainer = () =>  {
     
         return(
             <div className="itemDetailContainer" >
-               {loading ? <div className='gif'><img src="https://c.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif" alt="cargando"></img></div> : <ItemDetail onAdd = {onAdd} producto={producto}/>}
+               {loading ? <div className='gif'><img src="https://c.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif" alt="cargando"></img></div> : <ItemDetail producto={producto}/>}
             </div>
         )
     

@@ -4,8 +4,9 @@ import '../CartWidget/CartWidget';
 import CartWidget from '../CartWidget/CartWidget';
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Link} from "react-router-dom"; 
-import {getCategorias} from "../../productos";
 import {useEffect, useState} from 'react';
+import {db} from '../../services/firebase/firebase'
+import { getDocs, collection} from 'firebase/firestore'
 
 
 
@@ -14,9 +15,15 @@ const NavBar = () =>  {
     const [categorias, setCategorias] = useState([]);
     
     useEffect(() =>{
-        getCategorias().then(categorias => {
-            setCategorias(categorias);
+
+        getDocs(collection(db, 'categorias')).then((querySnapshot)=>{
+            const categorias = querySnapshot.docs.map(doc => {
+                return { id: doc.id, ...doc.data()}
+            })
+            console.log(categorias)
+            setCategorias(categorias)
         })
+
     },[])
     console.log(categorias)
 
