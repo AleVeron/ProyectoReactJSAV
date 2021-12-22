@@ -1,56 +1,57 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 
 //Creo el context del notification context
-const CartContext = React.createContext()
-const useCartContext = () => useContext(CartContext)
-
+const CartContext = React.createContext();
 
 //Creo la mascara a importar 
 export const CartContextProvider = ({children}) => {
 
-  const [cart, setCart] = useState([]);
+    const [cart, setCart] = useState([]);
 
-  const getCantidad = () => {
-      let subTotal = 0;
-      cart.forEach(elemento=> {
-          console.log(elemento);
-          subTotal += elemento.cantidad
-      })
-      return subTotal;
-  }
 
-  const addItem = (producto, quantity) => {
+    //Consulta si hay en carrito
+    const isInCart = (id) => {
+        return cart.some((prod) => prod.id === id);
+    };
 
-      const flag = isInCart(producto);
-      console.log(flag);
-      if (flag) {
-          let productoRepetido = cart.find (elemento => elemento.item === producto);
-          productoRepetido.cantidad += quantity;
-          let cartSinRepetido = cart.filter (elemento => elemento.item !== producto);
-          setCart([...cartSinRepetido, productoRepetido]);
-      } else {
-          setCart([...cart, {item: producto, cantidad: quantity}]);
-              }
-           }
 
-        const isInCart = (item) => {
-          return cart.some(producto => producto.item === item );
-           }
-        console.log(cart)
+    //Agregar cantidad
+    const sumarCantidad = (producto, quantity) =>{
+        const copia = [...cart];
+        copia.forEach((prod) => {
+            prod.id === producto.id && (prod.cantidad += quantity)
+        })
+    }
 
-  const removeItem = (item) => {
 
-  }
+    //Añadir item
+    const addItem = (producto, quantity) => {
+        if (isInCart (producto.id)){
+            console.log(producto);
+            sumarCantidad(producto, quantity);
+        } else {
+            setCart([...cart, { ...producto, cantidad: quantity}]);
+        }
+    };
 
-  const cleanCart = () => {
 
-  }
+    //Eliminar un item del carro
+    const removeItem = (id) => {
+      const borrarItem = cart.filter((producto) => producto.id !== id)
+      setCart(borrarItem)
+    }
+
+
+    //Vaciar carro de compras
+    const cleanCart = () => {
+        setCart([])
+    }
 
     return (
 
         <CartContext.Provider value={{
           cart,
-          addItem, removeItem, cleanCart, getCantidad}}>
+          addItem, removeItem, cleanCart}}>
 
             {children}
 
@@ -59,4 +60,4 @@ export const CartContextProvider = ({children}) => {
     )
 }
 
-export default useCartContext;
+export default CartContext;
