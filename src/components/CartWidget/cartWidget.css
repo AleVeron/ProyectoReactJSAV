@@ -1,6 +1,7 @@
 .widget{
     width: 65px;
     height: 65px;
+    border-radius: 10px;
 }
 
 button{
@@ -9,4 +10,9 @@ button{
 
 .cantidad{
     text-decoration: none;
+    padding: 15px;
+}
+
+.widgetDiv{
+    display: flex;
 }

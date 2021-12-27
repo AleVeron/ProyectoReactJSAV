@@ -25,7 +25,6 @@ const NavBar = () =>  {
         })
 
     },[])
-    console.log(categorias)
 
     return (
         <nav className='nav'>

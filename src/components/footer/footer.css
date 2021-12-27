@@ -1,0 +1,65 @@
+.footer {
+  display: flex;
+  font-family: inherit;
+  height: 100%;
+  text-align: center;
+  background-image: linear-gradient(rgb(69, 69, 71), rgb(0, 8, 0));
+  flex-direction: column;
+}
+
+.titulo__footer {
+  font-family: inherit;
+  text-transform: uppercase;
+  padding: 20px 20px 0px 0px;
+  color: white;
+  font-size: 40px;
+  font-weight: 500;
+}
+
+.footer_lista {
+  height: 75px;
+  padding: 10px 10px 10px 0px;
+  text-align: center;
+  font-family: "Fjalla One", sans-serif;
+}
+.lista__item {
+  display: inline-block;
+  width: 20%;
+  text-align: center;
+  font-size: 35px;
+}
+a {
+  text-decoration: none;
+  color: white;
+  font-size: 30px;
+  font-family: inherit;
+}
+a:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+.item__imagen {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+}
+.item__imagen:hover {
+  transition: width 0.5s, height 0.5s;
+  width: 47px;
+  height: 47px;
+}
+
+.footer__p {
+  color: rgb(209, 207, 207);
+}
+.footer__inicio {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-family: inherit;
+  padding: 10px;
+}
+.footer__inicio:hover {
+  text-decoration: underline;
+  color: white;
+}
