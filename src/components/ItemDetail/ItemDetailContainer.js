@@ -1,44 +1,48 @@
-import React from 'react'
-import ItemDetail from "./ItemDetail"
+import React from "react";
+import ItemDetail from "./ItemDetail";
 import "./itemDetailContainer.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getDoc, doc } from 'firebase/firestore'
-import {db} from '../../services/firebase/firebase'
+import { getDoc, doc } from "firebase/firestore";
+import { db } from "../../services/firebase/firebase";
 
+const ItemDetailContainer = () => {
+  const [loading, setLoading] = useState(true);
+  const { paramId } = useParams();
+  console.log(paramId);
 
+  const [producto, setProducto] = useState();
 
-const ItemDetailContainer = () =>  {
+  useEffect(() => {
+    setLoading(true);
+    getDoc(doc(db, "items", paramId))
+      .then((querySnapshot) => {
+        const producto = { id: querySnapshot.id, ...querySnapshot.data() };
+        setProducto(producto);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
 
-    const [loading, setLoading] = useState(true)
-    const {paramId} = useParams()
-    console.log(paramId);
+    return () => {
+      setProducto();
+    };
+  }, [paramId]);
 
-    const [producto, setProducto] = useState()
-
-    useEffect( () => {
-        setLoading(true)
-        getDoc(doc(db, 'items', paramId)).then((querySnapshot) => {
-            const producto = { id: querySnapshot.id, ...querySnapshot.data()}
-            setProducto(producto)
-        }).finally(()=> {
-            setLoading(false)
-        })
-        
-
-        return (() => {
-            setProducto()
-        })
-
-    }, [paramId])
-
-    
-        return(
-            <div className="itemDetailContainer" >
-               {loading ? <div className='gif'><img src="https://c.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif" alt="cargando"></img></div> : <ItemDetail producto={producto}/>}
-            </div>
-        )
-    
-}
+  return (
+    <div className="itemDetailContainer">
+      {loading ? (
+        <div className="gif">
+          <img
+            src="https://c.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif"
+            alt="cargando"
+          ></img>
+        </div>
+      ) : (
+        <ItemDetail producto={producto} />
+      )}
+    </div>
+  );
+};
 
 export default ItemDetailContainer;

@@ -1,58 +1,43 @@
-import './App.css';
-import NavBar from './components/NavBar/NavBar';
-import ItemListContainer from './components/ItemListContainer/ItemListContainer';
-import ItemDetailContainer from './components/ItemDetail/ItemDetailContainer';
-import React from 'react';
-import { BrowserRouter, Switch, Route} from 'react-router-dom';
-import Cart from './components/Cart/Cart'
-import { CartContextProvider } from './context/CartContext';
-import Footer from './components/footer/Footer';
-
-
+import "./App.css";
+import NavBar from "./components/NavBar/NavBar";
+import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
+import ItemDetailContainer from "./components/ItemDetail/ItemDetailContainer";
+import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Cart from "./components/Cart/Cart";
+import { CartContextProvider } from "./context/CartContext";
+import Footer from "./components/footer/Footer";
 
 function App() {
-  
-
   return (
-    <div className="App"> 
-
+    <div className="App">
       <CartContextProvider>
+        <BrowserRouter>
+          <NavBar />
 
-      <BrowserRouter>
+          <Switch>
+            <Route exact path="/">
+              <ItemListContainer greeting="Hola!, Bienvenido a mi proyecto de React" />
+            </Route>
 
-      <NavBar/>
+            <Route exact path="/cart">
+              <Cart/>
+            </Route>
 
-      <Switch>
+            <Route exact path="/categoria/:categoriaId">
+              <ItemListContainer greeting="Hola! Bienvenido a mi proyecto de React" />
+            </Route>
 
-      <Route exact path="/">
-      <ItemListContainer greeting="Hola!, Bienvenido a mi proyecto de React"/>
-      </Route>
+            <Route exact path="/detail/:paramId">
+              <ItemDetailContainer />
+            </Route>
+          </Switch>
 
-      <Route exact path='/cart'>
-      <Cart/>
-      </Route>
-
-      <Route exact path="/categoria/:categoriaId">
-      <ItemListContainer greeting="Hola! Bienvenido a mi proyecto de React"/>
-      </Route>
-
-      <Route exact path="/detail/:paramId">
-      <ItemDetailContainer/>
-      </Route>
-
-      </Switch>
-
-      <Footer/>
-
-      </BrowserRouter>
-
-
-
+          <Footer />
+        </BrowserRouter>
       </CartContextProvider>
-
     </div>
   );
 }
 
 export default App;
-
