@@ -20,59 +20,56 @@ const Cart = () => {
 
   //Estados orden realizada y contacto
   const [estadoOrden, setEstadoOrden] = useState(false);
-  const [formulario, setFormulario] = useState({
-    nombre: "",
+  const [contacto, setContacto] = useState({
+    comprador: "",
+    telefono: "",
     email: "",
+    direccion: "",
   });
 
-  const completarFormulario = (e) => {
-    const { nombre, value } = e.target;
-    setFormulario({
-      ...formulario,
-      [nombre]: value,
-    });
-  };
-
   const ordenRealizada = () => {
+
     setEstadoOrden(true);
 
     const objetoOrden = {
-      cliente: { nombre: formulario.comprador, email: formulario.email },
+      comprador: contacto.comprador,
       items: cart,
+      telefono: contacto.telefono,
+      email: contacto.email,
+      direccion: contacto.direccion,
       fecha: Timestamp.fromDate(new Date()),
     };
 
     const batch = writeBatch(db);
     const sinStock = [];
 
-    objetoOrden.items.forEach((prod) => {
-      getDoc(doc(db, "items", prod.id)).then((documentSnaphot) => {
-        if (documentSnaphot.data().stock >= prod.cantidad) {
-          batch.update(doc(db, "items", documentSnaphot.id), {
-            stock: documentSnaphot.data().stock - prod.cantidad,
+    ordenRealizada.items.forEach((prod) => {
+      getDoc(doc(db, "items", prod.id)).then((documentSnapshot) => {
+        if (documentSnapshot.data().stock >= prod.cantidad) {
+          batch.update(doc(db, "items", documentSnapshot.id), {
+            stock: documentSnapshot.data().stock - cart.cantidad,
           });
         } else {
-          sinStock.push({ id: documentSnaphot.id, ...documentSnaphot.data() });
+          sinStock.push({
+            id: documentSnapshot.id,
+            ...documentSnapshot.data(),
+          });
         }
       });
     });
 
     if (sinStock.length === 0) {
-      addDoc(collection(db, "ordenes"), objetoOrden)
-        .then((doc) => {
-          batch.commit().then(() => {
-            console.log(`su orden es ${doc.id}`);
-          });
-        })
-        .catch((error) => {
-          console.error(error);
-        })
-        .finally(() => {
-          setTimeout(() => {
-            cleanCart();
-          }, 3000);
+      addDoc(collection(db, "ordenes"), objetoOrden).then(({ id }) => {
+        batch.commit().then(() => {
+          console.log(id);
         });
+      });
     }
+
+    setTimeout(() => {
+      cleanCart();
+      setEstadoOrden(false);
+    }, 1500);
   };
 
   if (cart.length === 0) {
@@ -81,8 +78,8 @@ const Cart = () => {
         <h1 className="vacio">Carro de compras vacio</h1>
         <img
           className="imagenCarro"
-          alt="carro triste"
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcx24Hhd6_-KRuqcnMxN3-YOww4TL08NdyHoOE3XDGXK3NVQ9E186reV2uZJJUf4FnpPw&usqp=CAU"
+          alt="carrito"
         ></img>
       </div>
     );
@@ -108,13 +105,12 @@ const Cart = () => {
               <td>{producto.precio}</td>
               <td>{producto.cantidad}</td>
               <td>
-                <img
-                  className="imgCarro"
-                  src={producto.img}
-                  alt={producto.nombre}
-                />
+              <img
+                className="imgCarro"
+                src={producto.img}
+                alt={producto.nombre}
+              />
               </td>
-
               <th
                 className="agregar btn btn-danger"
                 onClick={() => removeItem(producto.id)}
@@ -129,22 +125,22 @@ const Cart = () => {
       {!estadoOrden ? (
         <form method="POST" onSubmit={ordenRealizada}>
           <input
-            onChange={completarFormulario}
+            onChange={setContacto}
             type="email"
             name="email"
             placeholder="email"
           />
           <input
-            onChange={completarFormulario}
-            type="text"
+            onChange={setContacto}
+            type="nombre"
             name="nombre"
             placeholder="nombre"
           />
           <button
-            disabled={
+            enabled={
               cart?.length === 0 ||
-              formulario.comprador === "" ||
-              formulario.email === ""
+              contacto.comprador === "" ||
+              contacto.email === ""
             }
           >
             Finaliza tu compra!
@@ -169,5 +165,3 @@ const Cart = () => {
 };
 
 export default Cart;
-
-//alert(JSON.stringify(objetoOrden))

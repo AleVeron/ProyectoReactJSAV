@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import ItemList from "../ItemList/ItemList";
 import "./itemListContainer.css";
 import { useParams } from "react-router-dom";
-import { collection, getDocs, query, where } from "firebase/firestore";
-import { db } from "../../services/firebase/firebase";
+import { getProductos } from '../../services/firebase/firebase'
 
 const ItemListContainer = ({ greeting }) => {
   const [productos, setProductos] = useState([]);
@@ -11,44 +10,53 @@ const ItemListContainer = ({ greeting }) => {
   const [loading, setLoading] = useState();
 
   useEffect(() => {
-    if (!categoriaId) {
-      //Agrego pantalla de carga al comienzo
-      setLoading(true);
 
-      //Funcion que retorna una promise de firebase
-      getDocs(collection(db, "items"))
-        .then((querySnapshot) => {
-          console.log(querySnapshot);
-          const productos = querySnapshot.docs.map((doc) => {
-            return { id: doc.id, ...doc.data() };
-          });
-          setProductos(productos);
-        })
-        .catch((error) => {
-          console.log(error);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
-    } else {
-      setLoading(true);
-      getDocs(
-        query(collection(db, "items"), where("categoria", "==", categoriaId))
-      )
-        .then((querySnapshot) => {
-          console.log(querySnapshot);
-          const productos = querySnapshot.docs.map((doc) => {
-            return { id: doc.id, ...doc.data() };
-          });
-          setProductos(productos);
-        })
-        .catch((error) => {
-          console.log(error);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
-    }
+    setLoading(true);
+    getProductos('categoria', '==', categoriaId).then(productos =>{
+      setProductos(productos)
+    }).catch(error => {
+      console.log(error)
+    }).finally(() =>{
+      setLoading(false)
+    })
+    // if (!categoriaId) {
+    //   //Agrego pantalla de carga al comienzo
+
+
+    //   //Funcion que retorna una promise de firebase
+    //   getDocs(collection(db, "items"))
+    //     .then((querySnapshot) => {
+    //       console.log(querySnapshot);
+    //       const productos = querySnapshot.docs.map((doc) => {
+    //         return { id: doc.id, ...doc.data() };
+    //       });
+    //       setProductos(productos);
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //     })
+    //     .finally(() => {
+    //       setLoading(false);
+    //     });
+    // } else {
+    //   setLoading(true);
+    //   getDocs(
+    //     query(collection(db, "items"), where("categoria", "==", categoriaId))
+    //   )
+    //     .then((querySnapshot) => {
+    //       console.log(querySnapshot);
+    //       const productos = querySnapshot.docs.map((doc) => {
+    //         return { id: doc.id, ...doc.data() };
+    //       });
+    //       setProductos(productos);
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //     })
+    //     .finally(() => {
+    //       setLoading(false);
+    //     });
+    // }
 
     return () => {
       setProductos([]);
