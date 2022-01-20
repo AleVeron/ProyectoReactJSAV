@@ -13,7 +13,7 @@ git clone https://github.com/AleVeron/ProyectoReactJSAV.git
 
 Siguiente a la clonacion se deben agregar las dependencias utilizando:
 
-**npm i**
+***npm i***
 
 Las dependencias a utilizar son las siguientes:
 * React
@@ -25,5 +25,23 @@ Las dependencias a utilizar son las siguientes:
 * Bootstrap
 * React-scripts
 
+## Firebase
 
+Para agregar nuestra lista de productos, tendra que crear un nuevo proyecto en Firebase. Inicie sesion en el mismo y cree la aplicacion. En la descripcion general del proyecto seleccione "Web" y luego siguiendo los pasos configurela segun su gusto. 
 
+## Base de datos Firestore
+
+Una vez configurado Firebase, se debe crear una base de datos en Firestore. Seleccione "modo de produccion" y seleccione la region mas acorde, una vez finalizado activelo. 
+Mediante esta base de datos (db) debera crear 2 nuevas colecciones una llamada *categorias* y otra de *items*
+
+La coleccion de categorias tendra que tener 2 campos:
+* description
+* id
+
+La coleccion de items tendra 6 campos:
+* categoria
+* img
+* info 
+* nombre
+* precio
+* stock
