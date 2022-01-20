@@ -9,7 +9,7 @@ La app se trata de un E-commerce el cual en su pagina principal cuenta con una b
 
 Lo primero que se debe realizar es clonar el repositorio de git de la siguiente manera:
 
-git clone https://github.com/AleVeron/ProyectoReactJSAV.git
+***git clone https://github.com/AleVeron/ProyectoReactJSAV.git***
 
 Siguiente a la clonacion se deben agregar las dependencias utilizando:
 
@@ -32,7 +32,7 @@ Para agregar nuestra lista de productos, tendra que crear un nuevo proyecto en F
 ## Base de datos Firestore
 
 Una vez configurado Firebase, se debe crear una base de datos en Firestore. Seleccione "modo de produccion" y seleccione la region mas acorde, una vez finalizado activelo. 
-Mediante esta base de datos (db) debera crear 2 nuevas colecciones una llamada *categorias* y otra de *items*
+Mediante esta base de datos (db) debera crear 2 nuevas colecciones una llamada *categorias* y otra de *items*. Ambas colecciones se recomienda que generen sus id automaticamente.
 
 La coleccion de categorias tendra que tener 2 campos:
 * description
@@ -40,8 +40,17 @@ La coleccion de categorias tendra que tener 2 campos:
 
 La coleccion de items tendra 6 campos:
 * categoria
-* img
+* img (se recomienda utilizar links publicos)
 * info 
 * nombre
 * precio
 * stock
+
+## Ejecución de la aplicacion
+
+Para comenzar con la aplicacion se debe ejecutar el siguiente comando: 
+
+**_npm start_**
+
+Se abrira en el navegador en modo desarrollo http://localhost:3000
+De esta manera podra utilizar esta app, modificarla y ver o corregir errores mediante la consola del navegador.
