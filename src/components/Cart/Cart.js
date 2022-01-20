@@ -21,10 +21,10 @@ const Cart = () => {
   //Estados orden realizada y contacto
   const [estadoOrden, setEstadoOrden] = useState(false);
   const [contacto, setContacto] = useState({
-    comprador: "",
-    telefono: "",
-    email: "",
-    direccion: "",
+    // comprador: "",
+    // telefono: "",
+    // email: "",
+    // direccion: "",
   });
 
   const ordenRealizada = () => {
@@ -32,22 +32,22 @@ const Cart = () => {
     setEstadoOrden(true);
 
     const objetoOrden = {
-      comprador: contacto.comprador,
+      // comprador: contacto.comprador,
       items: cart,
-      telefono: contacto.telefono,
-      email: contacto.email,
-      direccion: contacto.direccion,
+      // telefono: contacto.telefono,
+      // email: contacto.email,
+      // direccion: contacto.direccion,
       fecha: Timestamp.fromDate(new Date()),
     };
 
     const batch = writeBatch(db);
     const sinStock = [];
 
-    ordenRealizada.items.forEach((prod) => {
+    objetoOrden.items.forEach((prod) => {
       getDoc(doc(db, "items", prod.id)).then((documentSnapshot) => {
         if (documentSnapshot.data().stock >= prod.cantidad) {
           batch.update(doc(db, "items", documentSnapshot.id), {
-            stock: documentSnapshot.data().stock - cart.cantidad,
+            stock: documentSnapshot.data().stock - prod.cantidad,
           });
         } else {
           sinStock.push({
@@ -61,9 +61,18 @@ const Cart = () => {
     if (sinStock.length === 0) {
       addDoc(collection(db, "ordenes"), objetoOrden).then(({ id }) => {
         batch.commit().then(() => {
-          console.log(id);
+         alert(`El numero de orden es ${id}`)
         });
-      });
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        setTimeout(()=>{
+          cleanCart();
+          setEstadoOrden(false)
+        }, 3000)
+      })
     }
 
     setTimeout(() => {
@@ -137,7 +146,8 @@ const Cart = () => {
             placeholder="nombre"
           />
           <button
-            enabled={
+                  className="agregar btn btn-primary"
+            disabled={
               cart?.length === 0 ||
               contacto.comprador === "" ||
               contacto.email === ""
@@ -153,13 +163,14 @@ const Cart = () => {
       <button className="agregar btn btn-danger" onClick={cleanCart}>
         Limpiar carro
       </button>
-      <Link
+
+      {/*<Link
         to={"./"}
         className="agregar btn btn-primary"
         onClick={() => sweetAlert("Felicidades, finalizaste tu compra!")}
       >
         Finalizar compra
-      </Link>
+      </Link>*/}
     </div>
   );
 };
