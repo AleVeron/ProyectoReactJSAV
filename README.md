@@ -13,7 +13,7 @@ git clone https://github.com/AleVeron/ProyectoReactJSAV.git
 
 Siguiente a la clonacion se deben agregar las dependencias utilizando:
 
-*npm i*
+**npm i**
 
 Las dependencias a utilizar son las siguientes:
 * React
