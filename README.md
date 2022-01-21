@@ -54,3 +54,17 @@ Para comenzar con la aplicacion se debe ejecutar el siguiente comando:
 
 Se abrira en el navegador en modo desarrollo http://localhost:3000
 De esta manera podra utilizar esta app, modificarla y ver o corregir errores mediante la consola del navegador.
+
+## Componentes
+
+Como principales componentes podremos encontrar el NavBar, ItemDetail, ItemListContainer, Cart. 
+
+* NavBar : Con el NavBar se puede recorrer las 3 distintas categorias que existen segun su tipo de producto.
+
+* Item List Container : Cuerpo de la app, en la cual encontramos el listado de productos. Este envuelve tanto al ItemDetail como al buttonCount
+
+* ItemDetail : podremos acceder a el presionando al boton ver detalles, dentro de este componente tendremos informacion adicional de cada producto y un contador que agrega o quita segun el stock que se encuentre disponible. 
+
+* buttonCount : Su funcion es sumar y restar la cantidad de productos que deseemos y con su otro boton podremos agregar esa cantidad al carro de compras.
+
+* Cart : el carro de compras, en caso de estar vacio nos avisara con una imagen peculiar. Se veran en el los items agregados al mismo y se podra quitarlos, limpiar el carro por completo y ademas finalizar la compra realizando una orden que sera guardada en la base de datos que poseemos en firestore.

@@ -19,44 +19,6 @@ const ItemListContainer = ({ greeting }) => {
     }).finally(() =>{
       setLoading(false)
     })
-    // if (!categoriaId) {
-    //   //Agrego pantalla de carga al comienzo
-
-
-    //   //Funcion que retorna una promise de firebase
-    //   getDocs(collection(db, "items"))
-    //     .then((querySnapshot) => {
-    //       console.log(querySnapshot);
-    //       const productos = querySnapshot.docs.map((doc) => {
-    //         return { id: doc.id, ...doc.data() };
-    //       });
-    //       setProductos(productos);
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //     })
-    //     .finally(() => {
-    //       setLoading(false);
-    //     });
-    // } else {
-    //   setLoading(true);
-    //   getDocs(
-    //     query(collection(db, "items"), where("categoria", "==", categoriaId))
-    //   )
-    //     .then((querySnapshot) => {
-    //       console.log(querySnapshot);
-    //       const productos = querySnapshot.docs.map((doc) => {
-    //         return { id: doc.id, ...doc.data() };
-    //       });
-    //       setProductos(productos);
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //     })
-    //     .finally(() => {
-    //       setLoading(false);
-    //     });
-    // }
 
     return () => {
       setProductos([]);
