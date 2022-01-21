@@ -1,5 +1,5 @@
 import * as firebase from 'firebase/app'
-import { getFirestore, QuerySnapshot } from 'firebase/firestore'
+import { getFirestore } from 'firebase/firestore'
 import { collection, getDocs, query, where } from "firebase/firestore";
 
 

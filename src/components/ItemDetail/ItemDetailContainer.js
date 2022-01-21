@@ -9,8 +9,6 @@ import { db } from "../../services/firebase/firebase";
 const ItemDetailContainer = () => {
   const [loading, setLoading] = useState(true);
   const { paramId } = useParams();
-  console.log(paramId);
-
   const [producto, setProducto] = useState();
 
   useEffect(() => {

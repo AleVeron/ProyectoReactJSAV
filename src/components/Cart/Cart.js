@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import CartContext from "../../context/CartContext";
 import "./cart.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Link } from "react-router-dom";
 import {
   addDoc,
   collection,
@@ -15,29 +14,19 @@ import { db } from "../../services/firebase/firebase";
 
 const Cart = () => {
   //Funciones CartContext
-  const { cart, removeItem, cleanCart, sweetAlert } = useContext(CartContext);
-  console.log(cart);
+  const { cart, removeItem, cleanCart } = useContext(CartContext);
 
   //Estados orden realizada y contacto
   const [estadoOrden, setEstadoOrden] = useState(false);
-  const [contacto, setContacto] = useState({
-    // comprador: "",
-    // telefono: "",
-    // email: "",
-    // direccion: "",
-  });
+  const [contacto, setContacto] = useState({});
 
   const ordenRealizada = () => {
 
     setEstadoOrden(true);
 
     const objetoOrden = {
-      // comprador: contacto.comprador,
       items: cart,
-      // telefono: contacto.telefono,
-      // email: contacto.email,
-      // direccion: contacto.direccion,
-      fecha: Timestamp.fromDate(new Date()),
+      fecha: Timestamp.fromDate(new Date())
     };
 
     const batch = writeBatch(db);
@@ -164,13 +153,6 @@ const Cart = () => {
         Limpiar carro
       </button>
 
-      {/*<Link
-        to={"./"}
-        className="agregar btn btn-primary"
-        onClick={() => sweetAlert("Felicidades, finalizaste tu compra!")}
-      >
-        Finalizar compra
-      </Link>*/}
     </div>
   );
 };
