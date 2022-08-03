@@ -27,6 +27,8 @@ const ItemDetailContainer = () => {
     };
   }, [paramId]);
 
+  console.log("hola!");
+
   return (
     <div className="itemDetailContainer">
       {loading ? (
