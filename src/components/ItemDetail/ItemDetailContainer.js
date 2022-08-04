@@ -27,7 +27,7 @@ const ItemDetailContainer = () => {
     };
   }, [paramId]);
 
-  console.log("hola!");
+  console.log("chauchis!");
 
   return (
     <div className="itemDetailContainer">
