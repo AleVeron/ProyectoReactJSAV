@@ -27,10 +27,9 @@ const ItemDetailContainer = () => {
     };
   }, [paramId]);
 
-  console.log("buenas!");
 
   return (
-    <div className="itemDetailContainer">
+    <div className="itemDetailContainer d-flex align-items-center justify-content-center p-1 container col-10 col-md-7">
       {loading ? (
         <div className="gif">
           <img

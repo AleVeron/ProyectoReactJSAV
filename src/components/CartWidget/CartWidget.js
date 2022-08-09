@@ -7,7 +7,7 @@ const CartWidget = () => {
   const { cart } = useContext(CartContext);
 
   return (
-    <Link to={"/cart"} className="widgetDiv">
+    <Link to={"/cart"} className="widgetDiv d-flex justify-content-center align-items-center">
       <img
         className="widget"
         src="https://shopihunter.com/wp-content/uploads/2020/05/1faeabde14214dfb782e66a6406c46a9.png"

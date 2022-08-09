@@ -19,8 +19,8 @@ const ItemDetail = ({ producto }) => {
     <div className="detaildedCart">
       <h1>{producto?.nombre}</h1>
       <img className="imagenCard" src={producto?.img} alt={producto?.nombre} />
-      <p>Precio:{producto?.precio}</p>
-      <p>{producto?.info}</p>
+      <p className="mt-2">Precio:{producto?.precio}</p>
+      <p className="container">{producto?.info}</p>
 
       {mostrarBoton ? (
         <ButtonCount onAdd={addCarro} maxQuantity={producto?.stock} />

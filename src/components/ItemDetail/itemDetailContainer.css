@@ -1,10 +1,5 @@
 .itemDetailContainer{
-    width: 500px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background-color: #282c34;
-    margin: 0 25% 0 35%;
 }
 .gif{
     width: 100%;

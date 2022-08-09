@@ -20,20 +20,21 @@ const NavBar = () => {
     });
   }, []);
 
-  
+
 
   return (
-    <nav className="nav">
-      <h1 className="titulo">FUTURE GAMERS</h1>
+    <nav className="nav d-flex justify-content-around align-items-center p-4 flex-column gap-3 flex-lg-row">
+
+      <Link to={"/"} className="" >
+        <h1 className="titulo ">FUTURE GAMERS</h1>
+      </Link>
+
       <div className="botones">
-        <Link to={"/"} className="btn btn-primary">
-          Inicio{" "}
-        </Link>
-        <div className="categorias">
+        <div className="categorias ">
           {categorias.map((cat) => (
             <Link
               key={cat.id}
-              className="btn btn-primary"
+              className="btn btn-primary m-2"
               to={`/categoria/${cat.id}`}
             >
               {cat.description}
@@ -41,6 +42,7 @@ const NavBar = () => {
           ))}
         </div>
       </div>
+
       <CartWidget />
     </nav>
   );

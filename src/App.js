@@ -17,7 +17,7 @@ function App() {
 
           <Switch>
             <Route exact path="/">
-              <ItemListContainer greeting="Hola!, Bienvenido a mi proyecto de React" />
+              <ItemListContainer greeting="Hola!, Bienvenido a mi proyecto de React!" />
             </Route>
 
             <Route exact path="/cart">
@@ -25,7 +25,7 @@ function App() {
             </Route>
 
             <Route exact path="/categoria/:categoriaId">
-              <ItemListContainer greeting="Hola! Bienvenido a mi proyecto de React" />
+              <ItemListContainer greeting="Hola! Bienvenido a mi proyecto de React!" />
             </Route>
 
             <Route exact path="/detail/:paramId">
