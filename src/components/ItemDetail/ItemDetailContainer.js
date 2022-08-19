@@ -11,6 +11,8 @@ const ItemDetailContainer = () => {
   const { paramId } = useParams();
   const [producto, setProducto] = useState();
 
+  console.log("testing")
+  
   useEffect(() => {
     setLoading(true);
     getDoc(doc(db, "items", paramId))
