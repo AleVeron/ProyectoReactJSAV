@@ -2,6 +2,9 @@ import "./item.css";
 import { Link } from "react-router-dom";
 
 const Item = ({ producto, onAdd }) => {
+  
+  console.log("cards");
+  
   return (
     <article className="cartas">
       <img className="imagenCard" src={producto.img} alt={producto.nombre} />
