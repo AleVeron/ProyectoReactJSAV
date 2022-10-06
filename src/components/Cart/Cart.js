@@ -20,7 +20,8 @@ const Cart = () => {
   const [estadoOrden, setEstadoOrden] = useState(false);
   const [contacto, setContacto] = useState({});
   
-
+  console.log("hello")
+  
   const ordenRealizada = () => {
 
     setEstadoOrden(true);
